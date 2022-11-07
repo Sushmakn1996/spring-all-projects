@@ -1,0 +1,36 @@
+package com.te.springbootemp.entity;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import lombok.Data;
+
+@Entity
+@Data
+@Table(name="emp_secondary_info")
+public class EmployeeSecondaryInfo {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int secId;
+	private String empAadharNo;
+	private String empPanNo;
+	private String empHeight;
+	private String empPassport;
+	private String empDOJ;
+	private String empIdentificationMark;
+	private String FatherName;
+	private String MotherName;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+//	@JsonBackReference
+	private EmployeePrimaryInfo primaryInfo;
+	
+}

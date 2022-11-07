@@ -1,0 +1,16 @@
+package com.te.springbootemployee.service;
+
+import com.te.springbootemployee.dto.EmployeeDto;
+import com.te.springbootemployee.entity.Employee;
+
+public interface EmployeeService {
+	
+	public Employee register(Employee employee);
+	
+	public Employee getLogin(EmployeeDto dto);
+
+	public EmployeeDto entityToDto(Employee employee);
+
+	public Employee dtoToEntity(EmployeeDto dto);
+
+}

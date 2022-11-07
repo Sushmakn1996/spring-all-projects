@@ -1,0 +1,13 @@
+package com.te.springbootemp.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.te.springbootemp.dao.EmployeeDao;
+
+@Service
+public class EmployeeServiceImpl {
+
+	@Autowired
+	private EmployeeDao dao;
+}

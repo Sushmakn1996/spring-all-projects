@@ -1,0 +1,40 @@
+package com.te.springbootemployee.service;
+
+import java.util.List;
+
+import org.modelmapper.ModelMapper;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.te.springbootemployee.dao.EmployeeDao;
+import com.te.springbootemployee.entity.Employee;
+
+@Service
+public class EmployeeServiceImpl implements EmployeeService{
+
+	@Autowired
+	private EmployeeDao dao;
+
+	@Override
+	public List<Employee> getEmployee() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Employee register(Employee employee) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Employee login(Employee employee) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+
+	
+}

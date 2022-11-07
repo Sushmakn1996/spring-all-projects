@@ -1,0 +1,13 @@
+package com.te.springbootemp.dao;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.te.springbootemp.entity.EmployeePrimaryInfo;
+
+public interface EmployeeDao extends CrudRepository<EmployeePrimaryInfo, String> {
+	
+	public EmployeePrimaryInfo findByEmpId(String empId);
+	
+	
+
+}

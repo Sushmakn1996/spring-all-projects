@@ -1,0 +1,22 @@
+package com.te.springbootemp;
+
+import org.omg.CORBA.PUBLIC_MEMBER;
+import org.springframework.boot.SpringApplication;
+
+
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+
+public class SpringbootempApplication {
+	
+	public Modelmap
+
+	public static void main(String[] args) {
+		SpringApplication.run(SpringbootempApplication.class, args);
+		
+	
+	}
+	
+
+}

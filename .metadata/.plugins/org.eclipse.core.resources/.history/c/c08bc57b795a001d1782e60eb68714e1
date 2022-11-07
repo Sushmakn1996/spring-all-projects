@@ -1,0 +1,15 @@
+package com.te.springbootemp.entity;
+
+import lombok.Data;
+
+@Data
+public class Employee {
+	
+	private String empId;
+	private String empName;
+	private String address;
+	private String password;
+	
+	
+
+}

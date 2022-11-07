@@ -1,0 +1,69 @@
+package com.te.springbootemp.service;
+
+import org.modelmapper.ModelMapper;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.te.springbootemp.dao.EmployeeDao;
+import com.te.springbootemp.dto.EmployeeDto;
+import com.te.springbootemp.entity.EmployeePrimaryInfo;
+
+@Service
+public class EmployeeServiceImpl implements EmployeeService {
+
+	@Autowired
+	private EmployeeDao dao;
+	
+	@Autowired
+	private ModelMapper mapper;
+	
+	@Override
+	public EmployeePrimaryInfo register(EmployeePrimaryInfo primaryInfo) {
+		return dao.save(primaryInfo);
+	}
+
+	@Override
+	public EmployeePrimaryInfo getEmployee(String empId) {
+		return dao.findByEmpId(empId);
+	}
+
+	@Override
+	public EmployeePrimaryInfo update(EmployeePrimaryInfo primaryInfo) {
+		return dao.save(primaryInfo);
+		
+	}
+
+//	@Override
+//	public EmployeePrimaryInfo delete(String empId) {
+//		return null;
+//		
+//	}
+	
+	ModelMapper mapper1=new ModelMapper();
+	
+	@Override
+	public EmployeeDto entityToDto(EmployeePrimaryInfo info) {
+		EmployeeDto map = mapper1.map(info, EmployeeDto.class);
+		return map;
+	}
+	
+	
+	@Override
+	public EmployeePrimaryInfo dtoToEntity(EmployeeDto dto) {
+		EmployeePrimaryInfo map1 = mapper1.map(dto, EmployeePrimaryInfo.class);
+		return map1;
+	}
+
+	@Override
+	public EmployeePrimaryInfo getLogin(EmployeeDto dto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	
+
+
+	
+
+}

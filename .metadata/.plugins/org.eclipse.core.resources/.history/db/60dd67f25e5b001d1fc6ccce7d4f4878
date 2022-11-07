@@ -1,0 +1,27 @@
+package com.te.springbootemp.entity;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import lombok.Data;
+
+@Data
+public class EmployeeSkills {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int skid;
+	private String skill;
+	
+	@ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "tech_skills")
+	private List<EmployeePrimaryInfo> primaryInfo;
+
+}

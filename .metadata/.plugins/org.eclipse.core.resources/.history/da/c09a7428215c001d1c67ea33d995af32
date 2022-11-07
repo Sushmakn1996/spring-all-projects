@@ -1,0 +1,102 @@
+package com.te.springbootemp.controller;
+
+import java.util.List;
+
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.te.springbootemp.dto.EmployeeDto;
+import com.te.springbootemp.dto.EmployeeLoginDto;
+import com.te.springbootemp.entity.EmployeePrimaryInfo;
+import com.te.springbootemp.service.EmployeeService;
+
+import lombok.extern.slf4j.Slf4j;
+
+@RestController
+@Slf4j
+public class EmployeeController {
+
+	@Autowired
+	private EmployeeService service;
+
+	@PostMapping("/register")
+	public ResponseEntity<?> register(@RequestBody EmployeePrimaryInfo primaryInfo) {
+		try {
+			EmployeeDto dto = service.entityToDto(primaryInfo);
+			return new ResponseEntity<EmployeePrimaryInfo>(service.dtoToEntity(dto), HttpStatus.ACCEPTED);
+
+		} catch (Exception e) {
+			return new ResponseEntity<String>("Unsuccessful", HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@GetMapping("/getById/{empId}")
+	public ResponseEntity<?> getById(@PathVariable String empId){
+		try {
+			return new ResponseEntity<EmployeePrimaryInfo>(service.getEmployee(empId), HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<String>("Id not found", HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@PutMapping("/update")
+	public ResponseEntity<?> update(@RequestBody EmployeePrimaryInfo employee) {
+		if(service.update(employee)!=null) {
+			return new ResponseEntity<EmployeePrimaryInfo> (service.update(employee), HttpStatus.OK);
+		}
+		return new ResponseEntity<String> ("Data is not Updated", HttpStatus.BAD_REQUEST);	
+	}
+	
+	@DeleteMapping("/delete/{empId}")
+	public ResponseEntity<?> delete(@PathVariable String empId){
+		if(service.delete(empId)) {
+			return new ResponseEntity<>("Employee Deleted",HttpStatus.ACCEPTED);
+		}
+		return new ResponseEntity<>("Employee Not Found",HttpStatus.BAD_REQUEST);
+		
+	}
+	
+	@PostMapping("/login")
+	public ResponseEntity<?> getLogin(@RequestBody EmployeeLoginDto dto) {
+		EmployeePrimaryInfo emp=service.getLogin(dto);
+		if(emp!=null) {
+			return new ResponseEntity<>("Welcome"+ emp.getEmpName(), HttpStatus.ACCEPTED);
+		}
+			return new ResponseEntity<>("Unsuccessful", HttpStatus.BAD_REQUEST);
+		}
+	
+	
+	@GetMapping("/getAll")
+	public ResponseEntity<?> getAll(){
+		List<EmployeePrimaryInfo> list = (List<EmployeePrimaryInfo>) service.getAll();
+		if (list != null) {
+			return new ResponseEntity<List<EmployeePrimaryInfo>>(list, HttpStatus.ACCEPTED);
+		}
+		return new ResponseEntity<>("Something went wrong", HttpStatus.BAD_REQUEST);
+		
+	}
+	
+	@PostMapping("/addEmployee")
+	public ResponseEntity<?> addEmployee(@RequestBody EmployeeDto dto) {
+		if(service.addEmployee(dto)!=null){
+		return new ResponseEntity<>(new EmployeeDto(false,"Successfull",dto ),HttpStatus.ACCEPTED);
+		}
+		return new ResponseEntity<>(new EmployeeDto(true,"Something went wrong",dto ), HttpStatus.BAD_GATEWAY);
+	}
+	
+	
+	
+	}
+	
+

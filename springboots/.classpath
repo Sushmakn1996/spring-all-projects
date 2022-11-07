@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="springboots/src/main/java"/>
+	<classpathentry excluding="com/te/springboot/" kind="src" path="springboots/src/test/java"/>
+	<classpathentry kind="src" path="springboots/src/test/java/com/te/springboot"/>
+	<classpathentry kind="lib" path="springboots/.mvn/wrapper/maven-wrapper.jar"/>
+	<classpathentry kind="lib" path="springboots/target/springboot-0.0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="output" path="springboots/target/classes"/>
+</classpath>

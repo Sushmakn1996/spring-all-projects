@@ -1,0 +1,38 @@
+package com.te.springbootemployee.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.te.springbootemployee.dto.ResponseDto;
+import com.te.springbootemployee.entity.Employee;
+import com.te.springbootemployee.service.EmployeeService;
+
+@RestController
+public class EmployeeController {
+
+	@Autowired
+	private EmployeeService service;
+
+	@PostMapping("/register")
+	public ResponseEntity<ResponseDto> register(@RequestBody Employee employee) {
+		if(service.register(employee)!=null){
+			return new ResponseEntity<>(new ResponseDto(false, "Registration Successful",service.register(employee),null),HttpStatus.OK);
+		} 
+			return new ResponseEntity<>(new ResponseDto(true, "Something went wrong", null, null), HttpStatus.BAD_REQUEST);
+		}
+	
+	@PostMapping("/login")
+	public ResponseEntity<?> getLogin(@RequestBody EmployeeDto dto) {
+		Employee emp=service.getLogin(dto);
+		if(emp!=null) {
+			return new ResponseEntity<>("Welcome"+ emp.getEmpName(), HttpStatus.OK);
+		}
+			return new ResponseEntity<>("Unsuccessful", HttpStatus.BAD_REQUEST);
+		}
+	
+}

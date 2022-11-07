@@ -1,0 +1,23 @@
+package com.te.springbootemp.entity;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.ManyToMany;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import lombok.Data;
+
+@Data
+public class EmployeeSkills {
+	
+	private String java;
+	private String sql;
+	private String js;
+	private String react;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	private List<EmployeePrimaryInfo> primaryInfo;
+
+}

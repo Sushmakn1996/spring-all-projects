@@ -1,0 +1,17 @@
+package com.te.springbootemp.dto;
+
+import javax.persistence.Id;
+
+import lombok.Data;
+
+@Data
+public class EmployeeDto {
+	
+	@Id
+	private String empId;
+	private String empName;
+	private String userName;
+	private String password; 
+	
+
+}

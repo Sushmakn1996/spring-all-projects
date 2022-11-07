@@ -1,0 +1,15 @@
+package com.te.springbootemp.entity;
+
+import lombok.Data;
+
+@Data
+public class EmployeeSkills {
+	
+	private String java;
+	private String sql;
+	private String js;
+	private String react;
+	
+	
+
+}

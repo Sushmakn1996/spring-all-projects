@@ -1,0 +1,58 @@
+package com.te.springbootemp.entity;
+
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import lombok.Data;
+
+@Entity
+@Data
+@Table(name="emp_primary_info")
+public class EmployeePrimaryInfo  {
+
+	@Id
+	private String empId;
+	private String empName;
+	private String empAge;
+	private String empJob;
+	private String empBloodGrp;
+	private String empMailId;
+	private String empDob;
+	private String maritalStatus;
+	private String empGender;
+	private String empDeptNo;
+	private String password;
+	
+	@OneToOne(cascade = CascadeType.ALL,mappedBy = "primaryInfo")
+	@JsonManagedReference
+	private EmployeeSecondaryInfo secondaryInfo;
+	
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "primaryInfo")
+	@JsonManagedReference
+	private List<EmployeeEducationInfo> educationInfo;
+	
+	@ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@JoinTable(name="emp_skills",
+	joinColumns = {@JoinColumn(name="emp_id")},
+	inverseJoinColumns = {@JoinColumn(name="sk_id")})
+	private List<EmployeeSkills> skill;
+	
+
+	
+	
+	
+	
+	
+	
+}

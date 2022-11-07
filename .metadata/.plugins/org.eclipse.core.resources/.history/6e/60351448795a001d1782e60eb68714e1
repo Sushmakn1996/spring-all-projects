@@ -1,0 +1,5 @@
+package com.te.springbootemp.service;
+
+public interface EmployeeService {
+
+}

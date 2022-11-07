@@ -1,0 +1,9 @@
+package com.te.springbootemp.service;
+
+import com.te.springbootemp.entity.Employee;
+
+public interface EmployeeService {
+	
+	public Employee register(Employee employee);
+
+}

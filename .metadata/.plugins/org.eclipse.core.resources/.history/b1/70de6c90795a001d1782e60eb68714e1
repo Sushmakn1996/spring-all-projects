@@ -1,0 +1,5 @@
+package com.te.springbootemp.dto;
+
+public class EmployeeDto {
+
+}

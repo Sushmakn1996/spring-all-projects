@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+    <typeInfo handle="=springboot/C:\/Users\/SUZIE\/.m2\/repository\/org\/springframework\/data\/spring-data-commons\/2.7.5\/spring-data-commons-2.7.5.jar=/maven.pomderived=/true=/=/maven.groupId=/org.springframework.data=/=/maven.artifactId=/spring-data-commons=/=/maven.version=/2.7.5=/=/maven.scope=/compile=/=/maven.pomderived=/true=/&lt;org.springframework.data.repository(CrudRepository.class[CrudRepository" modifiers="1537" timestamp="1666850857110"/>
+    <typeInfo handle="=springboot/C:\/Users\/SUZIE\/.m2\/repository\/org\/mockito\/mockito-core\/4.5.1\/mockito-core-4.5.1.jar=/maven.pomderived=/true=/=/test=/true=/=/maven.groupId=/org.mockito=/=/maven.artifactId=/mockito-core=/=/maven.version=/4.5.1=/=/maven.scope=/test=/=/maven.pomderived=/true=/&lt;org.mockito(Mockito.class[Mockito" modifiers="33" timestamp="1666850908038"/>
+    <typeInfo handle="=springboot/C:\/Users\/SUZIE\/.m2\/repository\/org\/springframework\/spring-web\/5.3.23\/spring-web-5.3.23.jar=/maven.pomderived=/true=/=/maven.groupId=/org.springframework=/=/maven.artifactId=/spring-web=/=/maven.version=/5.3.23=/=/maven.scope=/compile=/=/maven.pomderived=/true=/&lt;org.springframework.web.multipart(MultipartFile.class[MultipartFile" modifiers="1537" timestamp="1666850892433"/>
+</typeInfoHistroy>

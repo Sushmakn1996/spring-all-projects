@@ -1,0 +1,53 @@
+package com.te.springbootemployee.service;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.te.springbootemployee.dao.EmployeeDao;
+import com.te.springbootemployee.dto.EmployeeDto;
+import com.te.springbootemployee.dto.ResponseDto;
+import com.te.springbootemployee.entity.Employee;
+
+@Service
+public class EmployeeServiceImpl implements EmployeeService{
+
+	@Autowired
+	private EmployeeDao dao;
+	
+	@Override
+	public Employee getLogin(ResponseDto dto) {
+		Employee employee=dao.findByEmpId(dto.g);
+		if(employee !=null) {
+			return employee;
+		}
+		return null;
+	}
+
+	@Override
+	public Employee register(Employee employee) {
+		return dao.save(employee);
+	}
+	
+	
+	ModelMapper mapper1=new ModelMapper();
+	
+	@Override
+	public ResponseDto entityToDto(Employee employee) {
+		ResponseDto map = mapper1.map(employee, ResponseDto.class);
+		return map;
+	}
+	
+	
+	@Override
+	public Employee dtoToEntityr(ResponseDto dto) {
+		Employee map1 = mapper1.map(dto, Employee.class);
+		return map1;
+	}
+
+	@Override
+	public Employee dtoToEntity(ResponseDto dto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}
